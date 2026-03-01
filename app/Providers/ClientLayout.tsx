@@ -7,6 +7,7 @@ import GlobalLoader from "./LoaderProvider/LoaderProvider";
 // import MenubarComponent from "../components/MenubarComponent/MenubarComponent";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
+import AppConstants from "../utils/AppConstants";
 const MenubarComponent = dynamic(
   () => import("../components/MenubarComponent/MenubarComponent"),
   { ssr: false }
@@ -19,7 +20,7 @@ export default function ClientLayout({
 }) {
   return (
     <Provider store={store}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>{AppConstants.LOADING_TEXT}</div>}>
         <PrimeReactProvider>
           <GlobalLoader />
           <MenubarComponent />

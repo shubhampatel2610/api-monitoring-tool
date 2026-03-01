@@ -23,6 +23,8 @@ class AppConstants {
         label: "Search APIs",
         placeholder: "Search"
     }
+
+    static LOADING_TEXT = "Loading...";
 }
 
 export default AppConstants;

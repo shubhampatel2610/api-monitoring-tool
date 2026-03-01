@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { ProgressSpinner } from "primereact/progressspinner";
 import dashboardStore from "@/app/store/DashboardStore";
 import styles from "./LoaderProvider.module.css";
+import AppConstants from "@/app/utils/AppConstants";
 
 const GlobalLoader = observer(() => {
     if (!dashboardStore.globalLoading) {
@@ -18,7 +19,7 @@ const GlobalLoader = observer(() => {
                     strokeWidth="4"
                     animationDuration=".8s"
                 />
-                <span className={styles.loadingText}>Loading...</span>
+                <span className={styles.loadingText}>{AppConstants.LOADING_TEXT}</span>
             </div>
         </div>
     );
