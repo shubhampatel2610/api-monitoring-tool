@@ -1,7 +1,9 @@
-import { Menubar } from 'primereact/menubar';
+"use client";
+
 import MenubarStartComponent from './MenubarStartComponent';
 import MenubarEndComponent from './MenubarEndComponent';
-import AppConstants from '@/app/utils/AppConstants';
+import AppConstants from '../../utils/AppConstants';
+import { Menubar } from 'primereact/menubar';
 
 const MenubarComponent = () => {
 

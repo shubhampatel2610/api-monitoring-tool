@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ClientLayout from "./ClientLayout";
-import MenubarComponent from "./components/MenubarComponent/MenubarComponent";
+import ClientLayout from "./Providers/ClientLayout";
 
 export const metadata: Metadata = {
   title: "Insight API",
@@ -17,10 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClientLayout>
-          <MenubarComponent />
-          <div className="common-styling">
-            {children}
-          </div>
+          {children}
         </ClientLayout>
       </body>
     </html>

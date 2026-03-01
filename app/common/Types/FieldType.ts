@@ -1,4 +1,4 @@
-import AppConstants from "@/app/utils/AppConstants"
+import AppConstants from "../../utils/AppConstants"
 import { makeAutoObservable } from "mobx"
 
 export interface FieldConfig {

@@ -1,4 +1,4 @@
-import AppConstants from "@/app/utils/AppConstants"
+import AppConstants from "../../app/utils/AppConstants"
 
 const AppLogo = () => {
     return (
