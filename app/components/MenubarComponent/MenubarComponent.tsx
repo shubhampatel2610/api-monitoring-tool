@@ -1,27 +1,24 @@
-import AppLogo from '@/public/Logo/AppLogo';
+"use client";
+
+import MenubarStartComponent from './MenubarStartComponent';
+import MenubarEndComponent from './MenubarEndComponent';
+import AppConstants from '../../utils/AppConstants';
 import { Menubar } from 'primereact/menubar';
 
 const MenubarComponent = () => {
+
     const menuItems = [
         {
-            label: 'Home',
-            icon: 'pi pi-home'
-        },
-        {
-            label: 'Features',
-            icon: 'pi pi-star'
-        },
-        {
-            label: 'Projects',
-            icon: 'pi pi-search',
-        },
-        {
-            label: 'Contact',
-            icon: 'pi pi-envelope'
+            label: AppConstants.HOME_LABEL,
+            icon: AppConstants.HOME_ICON
         }
     ];
 
-    return <Menubar model={menuItems} start={<AppLogo />} />
+    return <Menubar
+        model={menuItems}
+        start={<MenubarStartComponent />}
+        end={<MenubarEndComponent />}
+    />;
 }
 
 export default MenubarComponent;
