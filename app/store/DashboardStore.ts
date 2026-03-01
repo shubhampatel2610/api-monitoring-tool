@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { Field } from "../common/Types/FieldType";
+import AppConstants from "../utils/AppConstants";
 
 export class DashboardStore {
     constructor() {
@@ -7,10 +8,9 @@ export class DashboardStore {
     }
 
     searchField = new Field({
-        name: "searchField",
-        label: "Search APIs",
-        placeholder: "Search",
-        minLength: 3,
+        name: AppConstants.SEARCH_FIELD.name,
+        label: AppConstants.SEARCH_FIELD.label,
+        placeholder: AppConstants.SEARCH_FIELD.placeholder,
     })
 
 }

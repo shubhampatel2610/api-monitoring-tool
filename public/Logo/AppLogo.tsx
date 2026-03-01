@@ -1,3 +1,5 @@
+import AppConstants from "@/app/utils/AppConstants"
+
 const AppLogo = () => {
     return (
         <svg height="60" viewBox="0 0 420 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +30,7 @@ const AppLogo = () => {
                 font-size="36"
                 font-weight="600"
                 fill="#0F172A">
-                Insight<tspan fill="url(#blueGradient)">API</tspan>
+                {AppConstants.LOGO_INSIGHT_LABEL}<tspan fill="url(#blueGradient)">{AppConstants.LOGO_API_LABEL}</tspan>
             </text>
         </svg>
     )

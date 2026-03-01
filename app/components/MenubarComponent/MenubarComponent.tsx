@@ -1,13 +1,14 @@
 import { Menubar } from 'primereact/menubar';
 import MenubarStartComponent from './MenubarStartComponent';
 import MenubarEndComponent from './MenubarEndComponent';
+import AppConstants from '@/app/utils/AppConstants';
 
 const MenubarComponent = () => {
 
     const menuItems = [
         {
-            label: 'Home',
-            icon: 'pi pi-home'
+            label: AppConstants.HOME_LABEL,
+            icon: AppConstants.HOME_ICON
         }
     ];
 

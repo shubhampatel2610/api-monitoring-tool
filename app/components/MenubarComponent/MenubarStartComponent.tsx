@@ -1,11 +1,7 @@
 import AppLogo from "@/public/Logo/AppLogo";
 
 const MenubarStartComponent = () => {
-  return (
-    <>
-        <AppLogo />
-    </>
-  )
+  return <AppLogo />;
 }
 
 export default MenubarStartComponent;

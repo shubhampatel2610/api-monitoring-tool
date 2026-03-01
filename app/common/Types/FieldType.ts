@@ -1,3 +1,4 @@
+import AppConstants from "@/app/utils/AppConstants"
 import { makeAutoObservable } from "mobx"
 
 export interface FieldConfig {
@@ -38,17 +39,17 @@ export class Field {
 
     validate() {
         if (this.required && !this.value) {
-            this.error = `${this.label} is required`
+            this.error = `${this.label} ${AppConstants.REQUIRED_POSTFIX}`
             return;
         }
 
         if (this.minLength && this.value.length < this.minLength) {
-            this.error = `Minimum ${this.minLength} characters required`
+            this.error = `${AppConstants.MINIMUM_PREFIX} ${this.minLength} ${AppConstants.CHARS_REQUIRED_POSTFIX}`
             return;
         }
 
         if (this.maxLength && this.value.length > this.maxLength) {
-            this.error = `Maximum ${this.maxLength} characters allowed`
+            this.error = `${AppConstants.MAXIMUM_PREFIX} ${this.maxLength} ${AppConstants.CHARS_ALLOWED_POSTFIX}`
             return;
         }
 
