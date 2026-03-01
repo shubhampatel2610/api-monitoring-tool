@@ -34,7 +34,6 @@ export class Field {
 
     setValue(val: string) {
         this.value = val
-        this.validate()
     }
 
     validate() {
