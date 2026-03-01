@@ -1,19 +1,18 @@
 import { makeAutoObservable } from "mobx";
+import { Field } from "../common/Types/FieldType";
 
 export class DashboardStore {
     constructor() {
         makeAutoObservable(this);
     }
 
-    counter = 0;
+    searchField = new Field({
+        name: "searchField",
+        label: "Search APIs",
+        placeholder: "Search",
+        minLength: 3,
+    })
 
-    increase = () => {
-        this.counter++;
-    }
-
-    decrease = () => {
-        this.counter--;
-    }
 }
 
 const dashboardStore = new DashboardStore();
