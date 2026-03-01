@@ -18,7 +18,9 @@ export default function RootLayout({
       <body>
         <ClientLayout>
           <MenubarComponent />
-          {children}
+          <div className="common-styling">
+            {children}
+          </div>
         </ClientLayout>
       </body>
     </html>
