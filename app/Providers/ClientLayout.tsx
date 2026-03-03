@@ -20,15 +20,15 @@ export default function ClientLayout({
 }) {
   return (
     <Provider store={store}>
-      <Suspense fallback={<div>{AppConstants.LOADING_TEXT}</div>}>
-        <PrimeReactProvider>
-          <GlobalLoader />
+      <PrimeReactProvider>
+        <GlobalLoader />
+        <Suspense fallback={<div>{AppConstants.LOADING_TEXT}</div>}>
           <MenubarComponent />
           <div className="common-styling">
             {children}
           </div>
-        </PrimeReactProvider>
-      </Suspense>
+        </Suspense>
+      </PrimeReactProvider>
     </Provider>
   );
 }

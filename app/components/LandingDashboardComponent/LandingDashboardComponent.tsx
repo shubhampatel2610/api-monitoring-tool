@@ -1,4 +1,6 @@
 import { fetchAPIData } from "@/app/service/dashboardServices";
+import styles from "./LandingDashboardComponent.module.css";
+import ApiDatatableComponent from "./ApiDatatableComponent";
 
 const LandingDashboardComponent = async () => {
   const data = await fetchAPIData();
@@ -6,8 +8,8 @@ const LandingDashboardComponent = async () => {
   console.log("data", data);
 
   return (
-    <div>
-      Landing Dashboard
+    <div className={styles.mainContainer}>
+      <ApiDatatableComponent tableData={data.data} />
     </div>
   )
 }
