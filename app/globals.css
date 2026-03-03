@@ -68,3 +68,7 @@ body {
         box-shadow: none !important;
     }
 }
+
+.p-datatable {
+    font-size: 10px !important;
+}

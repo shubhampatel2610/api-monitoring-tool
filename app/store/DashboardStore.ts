@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { makeAutoObservable } from "mobx";
 import { Field } from "../common/Types/FieldType";
 import AppConstants from "../utils/AppConstants";
@@ -19,6 +20,8 @@ export class DashboardStore {
         placeholder: AppConstants.SEARCH_FIELD.placeholder,
     })
 
+    expandedRows: any = null;
+
     setGlobalLoading = (value: boolean) => {
         this.globalLoading = value;
     }
@@ -31,6 +34,9 @@ export class DashboardStore {
         this.globalErrorMessage = value;
     }
 
+    setExpandedRows = (value: any) => {
+        this.expandedRows = value;
+    }
 }
 
 const dashboardStore = new DashboardStore();

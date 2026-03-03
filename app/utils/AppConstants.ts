@@ -25,6 +25,20 @@ class AppConstants {
     }
 
     static LOADING_TEXT = "Loading...";
+
+    // Api Table Data Constants
+    static METHOD_HEADER = "Method"
+    static NAME_HEADER = "API Name"
+    static URL_HEADER = "API Url"
+    static LAST_CHECKED_HEADER = "Last Checked"
+    static TOTAL_CHECKS_HEADER = "Total Checks"
+    static UPTIME_PERCENTAGE_HEADER = "Up Time %"
+    static AVJ_RESPONSE_TIME_HEADER = "Average Response Time"
+
+    static TIME_STAMP_HEADER = "Checked At"
+    static RESPONSE_TIME_HEADER = "Response Time"
+    static STATUS_CODE_HEADER = "Status Code"
+    static STATUS_HEADER = "Status"
 }
 
 export default AppConstants;
