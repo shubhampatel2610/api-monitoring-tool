@@ -1,6 +1,6 @@
 import { fetchAPIData } from "@/app/service/dashboardServices";
 import styles from "./LandingDashboardComponent.module.css";
-import ApiDatatableComponent from "./ApiDatatableComponent";
+import ApiDatatableComponent from "./ApiDatatableComponent/ApiDatatableComponent";
 
 const LandingDashboardComponent = async () => {
   const data = await fetchAPIData();
