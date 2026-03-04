@@ -3,10 +3,10 @@
 @import "primereact/resources/themes/lara-light-cyan/theme.css";
 @import "primereact/resources/primereact.min.css";
 @import 'primeicons/primeicons.css';
-        
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 .common-styling {
@@ -15,30 +15,42 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.75rem;
+    }
 }
 
 .p-button {
     border-radius: 0.5rem;
     height: 44px !important;
-    /* background: var(--site-button-bg); */
     border: none;
+    padding: 0.5rem !important;
 
     .p-button-label,
     .p-button-icon {
         font-size: 1rem !important;
         font-weight: 500 !important;
+
+        @media (max-width: 768px) {
+            font-size: 0.85rem !important;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 0.75rem !important;
+        }
     }
 
     @media (max-width: 480px) {
         width: revert-layer !important;
-        
-    }
-
-    &:hover {
-        /* background: var(--site-button-hover-bg); */
     }
 
     &:focus {
@@ -50,25 +62,32 @@ body {
 .p-inputtext {
     width: 100% !important;
     background: transparent !important;
-    /* border: 1px solid var(--site-button-bg) !important; */
-    /* color: var(--site-text) !important; */
     border-radius: 0.5rem !important;
     padding: 0.5rem !important;
+    font-size: 1rem !important;
+    height: 40px !important;
 
     @media (max-width: 768px) {
-        font-size: 1rem !important;
+        font-size: 0.85rem !important;
     }
 
     @media (max-width: 480px) {
-        font-size: 0.875rem !important;
+        font-size: 0.75rem !important;
     }
 
     &:focus {
-        /* border-color: var(--site-links-hover) !important; */
         box-shadow: none !important;
     }
 }
 
 .p-datatable {
-    font-size: 14px !important;
+    font-size: 1rem !important;
+
+    @media (max-width: 768px) {
+        font-size: 0.85rem !important;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.75rem !important;
+    }
 }
