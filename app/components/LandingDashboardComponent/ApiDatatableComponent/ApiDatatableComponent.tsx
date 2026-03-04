@@ -100,8 +100,8 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
                 rows={5}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 totalRecords={tableData?.length}
-                paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
-                currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                // paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+                // currentPageReportTemplate="{first} to {last} of {totalRecords}"
             >
                 {tableColumns.map((col) => (
                     <Column
