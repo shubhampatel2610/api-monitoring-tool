@@ -1,3 +1,4 @@
+import { checkNumber, checkUrl } from "@/app/utils/helperFunctions"
 import AppConstants from "../../utils/AppConstants"
 import { makeAutoObservable } from "mobx"
 
@@ -9,6 +10,7 @@ export interface FieldConfig {
     minLength?: number
     maxLength?: number
     required?: boolean
+    type: string
 }
 
 export class Field {
@@ -20,6 +22,7 @@ export class Field {
     maxLength?: number
     required?: boolean
     error: string = ""
+    type: string = "text"
 
     constructor(config: FieldConfig) {
         this.name = config.name
@@ -29,6 +32,7 @@ export class Field {
         this.minLength = config.minLength
         this.maxLength = config.maxLength
         this.required = config.required ?? false
+        this.type = config.type ?? "text"
 
         makeAutoObservable(this)
     }
@@ -53,6 +57,21 @@ export class Field {
             return;
         }
 
+        if (this.type === "number" && this.value.length > 0 && !checkNumber(this.value)) {
+            this.error = `${AppConstants.REQUEST_ENTER_PREFIX} ${AppConstants.NUMBER_FIELD_POSTFIX}`
+            return;
+        }
+
+        if (this.type === "url" && this.value.length > 0 && !checkUrl(this.value)) {
+            this.error = `${AppConstants.REQUEST_ENTER_PREFIX} ${AppConstants.URL_FIELD_POSTFIX}`
+            return;
+        }
+
+        this.error = "";
+    }
+
+    reset() {
+        this.value = "";
         this.error = "";
     }
 }

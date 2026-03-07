@@ -10,13 +10,22 @@ import AppConstants from "@/app/utils/AppConstants";
 const LandingPageHeader = observer(() => {
     const searchField = dashboardStore.searchField;
 
+    const onAddApiClick = () => {
+        dashboardStore.SetAddApiPopupVisibility(true);
+    }
+
     return (
         <div className={styles.headerComponent}>
-            <InputTextComponent field={searchField} />
+            <InputTextComponent
+                field={searchField}
+                showLabel={false}
+                showError={false}
+            />
             <ButtonComponent
                 label={AppConstants.ADD_API_BTN_LABEL}
                 icon="pi pi-plus"
                 iconPos="right"
+                onClick={onAddApiClick}
             />
         </div>
     )

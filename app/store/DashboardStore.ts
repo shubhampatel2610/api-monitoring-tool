@@ -18,9 +18,12 @@ export class DashboardStore {
         name: AppConstants.SEARCH_FIELD.name,
         label: AppConstants.SEARCH_FIELD.label,
         placeholder: AppConstants.SEARCH_FIELD.placeholder,
+        type: AppConstants.SEARCH_FIELD.type
     })
 
     expandedRows: any = null;
+
+    addApiPopupVisibility: boolean = false;
 
     setGlobalLoading = (value: boolean) => {
         this.globalLoading = value;
@@ -36,6 +39,10 @@ export class DashboardStore {
 
     setExpandedRows = (value: any) => {
         this.expandedRows = value;
+    }
+
+    SetAddApiPopupVisibility = (value: boolean) => {
+        this.addApiPopupVisibility = value;
     }
 }
 

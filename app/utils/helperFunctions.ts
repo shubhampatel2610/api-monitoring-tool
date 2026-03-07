@@ -1,3 +1,5 @@
+import { Field } from "../common/Types/FieldType";
+
 export const getBadgeSeverityByMethod = (methodName: string) => {
     switch (methodName?.toUpperCase()) {
         case "GET": {
@@ -38,5 +40,33 @@ export const getBadgeSeverityByStatus = (statusCode: number) => {
         default: {
             return null;
         }
+    }
+}
+
+export const checkNumber = (value: string) => {
+    const numberCheckRegex = /[0-9]/;
+    return numberCheckRegex.test(value);
+}
+
+export const validateFormFields = (formFields: Field[]) => {
+    let isValid = true;
+
+    formFields.forEach((field) => {
+        field.validate();
+
+        if (!field.value || field.value.trim() === "" || field.error?.trim()) {
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+export const checkUrl = (value: string) => {
+    try {
+        new URL(value);
+        return true;
+    } catch {
+        return false;
     }
 }

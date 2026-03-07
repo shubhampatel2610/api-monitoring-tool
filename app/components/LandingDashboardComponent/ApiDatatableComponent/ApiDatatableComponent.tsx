@@ -19,7 +19,7 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
     const { tableData } = props;
 
     const DateColumnRenderer = (rowData: any) => {
-        const formattedDate = moment(rowData?.lastChecked).format("DD/MM/YYYY, hh:mm A");
+        const formattedDate = rowData?.lastChecked ? moment(rowData?.lastChecked).format("DD/MM/YYYY, hh:mm A") : "-";
         return <span id={rowData._id}>{formattedDate}</span>;
     }
 
