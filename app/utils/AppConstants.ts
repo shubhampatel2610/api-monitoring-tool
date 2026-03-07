@@ -38,6 +38,7 @@ class AppConstants {
     static TOTAL_CHECKS_HEADER = "Total Checks";
     static UPTIME_PERCENTAGE_HEADER = "Up Time %";
     static AVJ_RESPONSE_TIME_HEADER = "Average Response Time";
+    static ACTIONS_HEADER = "Actions";
 
     static TIME_STAMP_HEADER = "Checked At";
     static RESPONSE_TIME_HEADER = "Response Time";

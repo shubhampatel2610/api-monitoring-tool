@@ -9,7 +9,8 @@ interface ButtonProps {
     iconPos?: "top" | "right" | "bottom" | "left",
     disabled?: boolean,
     severity?: "secondary" | "success" | "info" | "warning" | "danger" | "help" | "contrast" | undefined,
-    outlined?: boolean
+    outlined?: boolean,
+    rounded?: boolean
 }
 
 const ButtonComponent = (props: ButtonProps) => {
@@ -21,7 +22,8 @@ const ButtonComponent = (props: ButtonProps) => {
         iconPos,
         disabled,
         severity,
-        outlined
+        outlined,
+        rounded
     } = props;
 
     return (
@@ -34,6 +36,7 @@ const ButtonComponent = (props: ButtonProps) => {
             disabled={disabled}
             severity={severity}
             outlined={outlined}
+            rounded={rounded}
         />
     )
 }
