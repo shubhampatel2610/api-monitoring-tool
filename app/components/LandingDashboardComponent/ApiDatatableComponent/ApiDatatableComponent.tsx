@@ -10,6 +10,7 @@ import { Badge } from "primereact/badge";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import DatatableExpansionTemplate from "./DatatableExpansionTemplate";
+import ButtonComponent from "@/app/common/ButtonComponent/ButtonComponent";
 
 interface DatatableProps {
     tableData: any[];
@@ -19,7 +20,7 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
     const { tableData } = props;
 
     const DateColumnRenderer = (rowData: any) => {
-        const formattedDate = moment(rowData?.lastChecked).format("DD/MM/YYYY, hh:mm A");
+        const formattedDate = rowData?.lastChecked ? moment(rowData?.lastChecked).format("DD/MM/YYYY, hh:mm A") : "-";
         return <span id={rowData._id}>{formattedDate}</span>;
     }
 
@@ -31,6 +32,47 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
             value={rowData?.method}
             severity={badgeSeverity}
         />;
+    }
+
+    const onExpandClick = (id: string, isExpanded: boolean) => {
+        const newExpandedRows = { ...dashboardStore.expandedRows };
+
+        if (isExpanded) {
+            delete newExpandedRows[id];
+        } else {
+            newExpandedRows[id] = true;
+        }
+
+        dashboardStore.setExpandedRows(newExpandedRows);
+    }
+
+    const ActionColumnRenderer = (rowData: any) => {
+        const isExpanded = dashboardStore.expandedRows?.[rowData?._id];
+
+        return <div id={rowData._id} className={"flex gap-1"}>
+            <ButtonComponent
+                icon="pi pi-sync"
+                rounded outlined
+                severity={"success"}
+            />
+            <ButtonComponent
+                icon="pi pi-pencil"
+                rounded outlined
+                severity={"help"}
+            />
+            <ButtonComponent
+                icon="pi pi-trash"
+                rounded outlined
+                severity={"danger"}
+            />
+            {(rowData?.logs?.length > 0) &&
+                <ButtonComponent
+                    icon={`pi ${isExpanded ? "pi-angle-down" : "pi-angle-right"}`}
+                    rounded outlined
+                    onClick={() => onExpandClick(rowData._id, isExpanded)}
+                    severity={"info"}
+                />}
+        </div>;
     }
 
     const tableColumns = [
@@ -71,6 +113,10 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
             header: AppConstants.AVJ_RESPONSE_TIME_HEADER,
             sortable: true
         },
+        {
+            header: AppConstants.ACTIONS_HEADER,
+            body: ActionColumnRenderer
+        },
     ];
 
     const rowExpansionTemplate = (rowData: any) => {
@@ -79,10 +125,6 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
             DateColumnRenderer={DateColumnRenderer}
         />
     }
-
-    const allowExpansion = (rowData: any) => {
-        return rowData?.logs?.length > 0;
-    };
 
     return (
         <>
@@ -94,14 +136,13 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
                 showGridlines
                 removableSort
                 expandedRows={dashboardStore.expandedRows}
-                onRowToggle={(e) => dashboardStore.setExpandedRows(e.data)}
                 rowExpansionTemplate={rowExpansionTemplate}
                 paginator
                 rows={5}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 totalRecords={tableData?.length}
-                // paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
-                // currentPageReportTemplate="{first} to {last} of {totalRecords}"
+            // paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+            // currentPageReportTemplate="{first} to {last} of {totalRecords}"
             >
                 {tableColumns.map((col) => (
                     <Column
@@ -112,7 +153,6 @@ const ApiDatatableComponent = observer((props: DatatableProps) => {
                         body={col.body}
                     />
                 ))}
-                <Column expander={allowExpansion} style={{ width: '5rem' }} />
             </DataTable>
         </>
     )

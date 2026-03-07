@@ -1,29 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { InputText } from "primereact/inputtext";
 import { Field } from "../Types/FieldType";
 import { observer } from "mobx-react";
 import "../../../app/globals.css";
+import { Dropdown } from "primereact/dropdown";
 
-interface InputTextComponentProps {
+type DropdownOption = {
+    label: string;
+    value: string;
+};
+
+interface DropdownComponentProps {
     field: Field,
+    options: DropdownOption[];
     showError?: boolean,
     showLabel?: boolean,
     className?: string,
-    onChange?: (e?: any) => void
+    onChange?: (e?: any) => void;
 }
 
-const InputTextComponent = observer((props: InputTextComponentProps) => {
-    const { field, showError = true, showLabel = true, className, onChange } = props;
+const DropdownComponent = observer((props: DropdownComponentProps) => {
+    const { field, showError = true, showLabel = true, className, options, onChange } = props;
 
     const id = field?.label?.toLowerCase().replace(" ", "-");
 
     return (
         <div className="flex flex-col">
             {(field?.label && showLabel) && <label className="globalLabel">{field?.label}</label>}
-            <InputText
+            <Dropdown
                 className={className}
+                options={options}
+                optionLabel="label"
                 id={id}
                 value={field?.value}
                 onChange={(e) => {
@@ -40,4 +48,4 @@ const InputTextComponent = observer((props: InputTextComponentProps) => {
     )
 });
 
-export default InputTextComponent;
+export default DropdownComponent;
